@@ -1,9 +1,10 @@
 class Album < ActiveRecord::Base
+  ALBUM_TYPES = ["live", "studio"]
+  
   validates :title, presence: true, uniqueness: true
-  validates :album_type inclusion: ALBUM_TYPES
+  validates :album_type, inclusion: ALBUM_TYPES
   validates :band_id, presence: true
 
-  ALBUM_TYPES = ["live", "studio"]
 
   belongs_to(
     :band,

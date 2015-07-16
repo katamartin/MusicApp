@@ -1,0 +1,50 @@
+<% if task == :create %>
+  <% url = tracks_url %>
+  <% method = "POST" %>
+<% else %>
+  <% url = track_url(track) %>
+  <% method = "PATCH" %>
+<% end %>
+
+<h1><%= task.to_s.capitalize %> a Track</h1>
+<form action="<%= url %>" method="POST">
+  <input type="hidden" name="_method" value="<%= method %>">
+  <%= authenticate %>
+
+  <label for="title">Track Title</label>
+  <input type="text" name="track[title]" id="title" value="<%= track.title %>">
+  <br><br>
+
+  <label for="album">Album</label>
+  <select name="track[album_id]" id="album">
+    <% @albums.each do |album| %>
+      <option value="<%= album.id %>"
+              <%= "selected" if album.id == @track.album_id %>>
+              <%= album.title %>
+      </option>
+    <% end %>
+  </select>
+  <br><br>
+
+  <input type="radio"
+         name="track[track_type]"
+         id="regular_track"
+         value="regular"
+         <%= "checked" if track.track_type == "regular" %>>
+  <label for="regular_track">Regular Track</label>
+  <input type="radio"
+         name="track[track_type]"
+         id="bonus_track"
+         value="bonus"
+         <%= "checked" if track.track_type == "bonus" %> >
+  <label for="bonus_track">Bonus Track</label>
+  <br><br>
+
+  <label for="lryics">Song Lyrics</label>
+  <textarea name="track[lyrics]" id="lyrics" value="<%= track.lyrics %>"></textarea>
+  <br>
+
+  <input type="submit" value="Submit">
+
+
+</form>

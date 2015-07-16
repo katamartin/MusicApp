@@ -1,0 +1,6 @@
+<h1>Bands</h1>
+<table>
+  <%= render partial: "band", collection: Band.all.order(:name) %>
+</table>
+<br>
+<a href="<%= new_band_url %>">Make New Band</a>

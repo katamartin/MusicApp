@@ -1,4 +1,8 @@
 class Track < ActiveRecord::Base
+  TRACK_TYPES = ["bonus", "regular"]
+
+  validates :track_type, inclusion: TRACK_TYPES
+
   belongs_to(
     :album,
     class_name: :Album,

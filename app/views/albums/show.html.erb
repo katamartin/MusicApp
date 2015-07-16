@@ -1,0 +1,16 @@
+<h1><%= @album.title %></h1>
+<br>
+<h2>Tracks</h2>
+<table>
+<%= render partial: "tracks/track", collection: @album.tracks %>
+</table>
+<br>
+<%= up_one_level(@album) %>
+<br>
+<a href="<%= edit_album_url(@album) %>">Edit</a>
+<%= make_new_for(@album) %>
+<form action="<%= album_url(@album) %>" method="POST">
+  <%= authenticate %>
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete">
+</form>

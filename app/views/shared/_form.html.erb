@@ -6,10 +6,7 @@
   <% text = "Sign up" %>
 <% end %>
 <form action="<%= url %>" method="POST">
-  <input type="hidden"
-         name="authenticity_token"
-         value="<%= form_authenticity_token %>">
-
+  <%= authenticate %>
   <label for="email">Email</label>
   <input type="text" name="user[email]" id="email" value="<%= edited_user.email %>">
   <br>

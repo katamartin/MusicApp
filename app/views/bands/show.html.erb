@@ -1,0 +1,11 @@
+<h1><%= @band.name %></h1>
+<br>
+<h2>Albums</h2>
+<table>
+<%= render partial: "albums/album", collection: @band.albums %>
+</table>
+<br>
+<a href="<%= edit_band_url(@band) %>">Edit</a>
+<%= make_new_for(@band) %>
+<br><br>
+<%= up_one_level(@band) %>

@@ -1,0 +1,11 @@
+<%= @track.title %>
+<br>
+<%= up_one_level(@track) %>
+<br>
+<a href="<%= edit_track_url(@track) %>">Edit</a>
+<br>
+<form action="<%= track_url(@track) %>" method="POST">
+  <%= authenticate %>
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete">
+</form>

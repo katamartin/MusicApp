@@ -1,0 +1,39 @@
+<!-- <h1>Create an Album</h1>
+<form action="<%= albums_url %>" method="POST">
+  <%= authenticate %>
+
+  <label for="title">Album Title</label>
+  <input type="text" name="album[title]" id="title" value="<%= @album.title %>">
+  <br><br>
+
+  <label for="band">Band</label>
+  <select name="album[band_id]" id="band">
+    <% @bands.each do |band| %>
+      <option value="<%= band.id %>"
+              <%= "selected" if band.id == @album.band_id %>>
+              <%= band.name %>
+      </option>
+    <% end %>
+  </select>
+  <br><br>
+
+  <input type="radio"
+         name="album[album_type]"
+         id="live_album"
+         value="live"
+         <%= "checked" if @album.album_type == "live" %>>
+  <label for="live_album">Live Album</label>
+  <input type="radio"
+         name="album[album_type]"
+         id="studio_album"
+         value="studio"
+         <%= "checked" if @album.album_type == "studio" %>>
+  <label for="studio_album">Studio Album</label>
+  <br><br>
+
+  <input type="submit" value="Submit">
+
+
+</form> -->
+
+<%= render "form", task: :create, album: @album %>
