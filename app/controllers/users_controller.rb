@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :user_must_be_logged_in, only: [:show]
+  before_action :redirect_if_logged_in, only: [:new, :create]
+
   def new
     @user = User.new
     render :new
@@ -13,10 +15,6 @@ class UsersController < ApplicationController
     else
       render :new
     end
-  end
-
-  def user_params
-    params.require(:user).permit(:email, :password)
   end
 
   def user_must_be_logged_in

@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
 
   after_initialize :ensure_session_token
-
+  
   def self.generate_session_token
     SecureRandom.urlsafe_base64
   end
@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   end
 
   def is_password?(password)
-    password_digest.is_password?(password)
+    BCrypt::Password.new(password_digest).is_password?(password)
   end
 
   def reset_session_token!

@@ -22,4 +22,13 @@ class ApplicationController < ActionController::Base
     user.reset_session_token!
     session[:session_token] = user.session_token
   end
+
+  def user_params
+    params.require(:user).permit(:email, :password)
+  end
+
+  def redirect_if_logged_in
+    redirect_to user_url(current_user) if current_user
+  end
+
 end
