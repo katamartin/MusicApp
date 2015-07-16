@@ -1,4 +1,6 @@
 class AlbumsController < ApplicationController
+  before_action :require_login
+
   def new
     @album = Album.new
     @bands = Band.all
@@ -48,7 +50,7 @@ class AlbumsController < ApplicationController
       redirect_to band_url(band)
     end
   end
-
+  
   def album_params
     params.require(:album).permit(:title, :album_type, :band_id)
   end

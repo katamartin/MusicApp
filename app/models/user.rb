@@ -3,14 +3,14 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
 
   after_initialize :ensure_session_token
-  
+
   def self.generate_session_token
     SecureRandom.urlsafe_base64
   end
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
-    user.is_password?(password) ? user : nil
+    user && user.is_password?(password) ? user : nil
   end
 
   def password=(password)

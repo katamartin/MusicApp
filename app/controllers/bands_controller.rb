@@ -1,4 +1,6 @@
 class BandsController < ApplicationController
+  before_action :require_login
+
   def show
     @band = Band.find(params[:id])
   end

@@ -31,4 +31,8 @@ class ApplicationController < ActionController::Base
     redirect_to user_url(current_user) if current_user
   end
 
+  def require_login
+    redirect_to new_session_url unless logged_in?
+  end
+
 end
