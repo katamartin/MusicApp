@@ -13,3 +13,7 @@
   <input type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete">
 </form>
+<br>
+<%= render "notes/form", note: @note%>
+<%= render partial: "notes/note", collection: @track.notes %>
+<br>

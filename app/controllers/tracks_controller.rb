@@ -36,6 +36,7 @@ class TracksController < ApplicationController
 
   def show
     @track = Track.find(params[:id])
+    @note = Note.new(user_id: current_user.id, track_id: params[:id])
   end
 
   def destroy
