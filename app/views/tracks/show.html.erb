@@ -2,6 +2,10 @@
 <br>
 <%= up_one_level(@track) %>
 <br>
+
+<h3>Lyrics</h3>
+<p><%= @track.lyrics %></p><br>
+
 <a href="<%= edit_track_url(@track) %>">Edit</a>
 <br>
 <form action="<%= track_url(@track) %>" method="POST">
