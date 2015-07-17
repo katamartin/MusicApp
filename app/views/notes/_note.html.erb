@@ -1,5 +1,5 @@
-<h3><%= note.user.email %></h3>
-<p><%= note.body %></p>
+<h3><%= h(note.user.email) %></h3>
+<p><%= h(note.body) %></p>
 <% if current_user == note.user %>
 <form action="<%= note_url(note) %>" method="POST">
   <%= authenticate %>
